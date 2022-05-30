@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Group } from '../models/group';
+import { GroupLock } from '../models/grouplock';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -16,8 +17,11 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     getGroups: builder.query<Group[], void>({
       query: () => '/groups'
+    }),
+    getGroupLocks: builder.query<GroupLock[], string>({
+      query: (groupId) => `/group_locks?group_id=${groupId}`
     })
   })
 });
 
-export const { useGetGroupsQuery } = apiSlice;
+export const { useGetGroupsQuery, useGetGroupLocksQuery } = apiSlice;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -24,16 +25,20 @@ const Group: React.FC<Props> = ({ group }) => {
           <Typography>{group.name}</Typography>
         </Grid>
         <StyledGrid item xs={1}>
-          <Box>
-            <SensorDoorOutlinedIcon />
-          </Box>
-          <Box>{group.locks_count}</Box>
+          <Link to={`/groupLocks/${group.id}`}>
+            <Box>
+              <SensorDoorOutlinedIcon />
+            </Box>
+            <Box>{group.locks_count}</Box>
+          </Link>
         </StyledGrid>
         <StyledGrid item xs={1}>
-          <Box>
-            <PeopleOutlinedIcon />
-          </Box>
-          <Box>{group.members_count}</Box>
+          <div>
+            <Box>
+              <PeopleOutlinedIcon />
+            </Box>
+            <Box>{group.members_count}</Box>
+          </div>
         </StyledGrid>
         <StyledGrid item xs={1}>
           <Box>

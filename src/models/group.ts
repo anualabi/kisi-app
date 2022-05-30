@@ -24,6 +24,7 @@ export interface Group {
 
 export type GroupPayload = Pick<
   Group,
+  | 'id'
   | 'name'
   | 'locks_count'
   | 'members_count'
