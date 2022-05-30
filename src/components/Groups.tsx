@@ -1,9 +1,10 @@
 import Container from '@mui/material/Container';
-import CircularProgress from '@mui/material/CircularProgress';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import { useGetGroupsQuery } from '../../api/apiSlice';
-import Group from '../Group';
+import Spinner from './Spinner';
+import { useGetGroupsQuery } from '../api/apiSlice';
+import Group from './Group';
+import ErrorMessage from './ErrorMessage';
 
 const Groups = () => {
   const { data: groups = [], isLoading, isSuccess, isError } = useGetGroupsQuery();
@@ -11,11 +12,15 @@ const Groups = () => {
   let content;
 
   if (isLoading) {
-    content = <CircularProgress />;
+    content = <Spinner />;
   } else if (isSuccess) {
-    content = groups.map((group) => <Group key={group.id} group={group} />);
+    content = groups.length ? (
+      groups.map((group) => <Group key={group.id} group={group} />)
+    ) : (
+      <Typography textAlign="center">There are currently no groups.</Typography>
+    );
   } else if (isError) {
-    content = <Typography color="red">Groups not found.</Typography>;
+    content = <ErrorMessage message="Groups not found." />;
   }
 
   return (

@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
-import { GroupLock } from '../../models/grouplock';
+import { GroupLock } from '../types/grouplock';
 
 interface Props {
   lock: GroupLock;

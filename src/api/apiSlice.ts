@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Group } from '../models/group';
-import { GroupLock } from '../models/grouplock';
+import { Group } from '../types/group';
+import { GroupLock } from '../types/grouplock';
 
 export const apiSlice = createApi({
   reducerPath: 'api',

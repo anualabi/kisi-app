@@ -10,12 +10,25 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import AodOutlinedIcon from '@mui/icons-material/AodOutlined';
-import { GroupPayload } from '../../models/group';
-import { StyledGrid } from './styles';
+import { GroupPayload } from '../types/group';
+import styled from '@emotion/styled';
 
 interface Props {
   group: GroupPayload;
 }
+
+const StyledGrid = styled(Grid, {})`
+  div,
+  a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  a {
+    cursor: pointer;
+  }
+`;
 
 const Group: React.FC<Props> = ({ group }) => {
   return (
