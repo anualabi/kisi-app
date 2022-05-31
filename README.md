@@ -18,8 +18,9 @@
 
 The features implemented are as follows:
 
-- Retrieve a list of groups for the user
+- Retrieve a list of groups for the user.
 - Show the list of locks associated with a group.
+- Implement assigning a new lock to a group.
 
 ## How To Use
 
