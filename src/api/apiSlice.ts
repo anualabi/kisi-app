@@ -20,6 +20,7 @@ export const apiSlice = createApi({
       return headers;
     }
   }),
+  tagTypes: ['GroupLocks'],
   endpoints: (builder) => ({
     getGroups: builder.query<AllResponse, number | void>({
       query: (offset) => `/groups?offset=${offset}`,
@@ -28,14 +29,23 @@ export const apiSlice = createApi({
       }
     }),
     getGroupLocks: builder.query<GroupLock[], string>({
-      query: (groupId) => `/group_locks?group_id=${groupId}`
+      query: (groupId) => `/group_locks?group_id=${groupId}`,
+      providesTags: ['GroupLocks']
     }),
     addNewGroupLock: builder.mutation({
       query: (formData) => ({
         url: '/group_locks',
         method: 'POST',
         body: formData
-      })
+      }),
+      invalidatesTags: ['GroupLocks']
+    }),
+    removeGroupLock: builder.mutation<void, number>({
+      query: (lockId) => ({
+        url: `/group_locks/${lockId}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['GroupLocks']
     }),
     getLocks: builder.query<Lock[], void>({
       query: () => '/locks'
@@ -47,5 +57,6 @@ export const {
   useGetGroupsQuery,
   useGetGroupLocksQuery,
   useGetLocksQuery,
-  useAddNewGroupLockMutation
+  useAddNewGroupLockMutation,
+  useRemoveGroupLockMutation
 } = apiSlice;
