@@ -13,6 +13,7 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [Material-UI](https://mui.com/)
 - [React Router](https://reactrouter.com/)
+- [Formik](https://formik.org/)
 
 ## Features
 
