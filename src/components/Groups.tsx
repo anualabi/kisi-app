@@ -35,13 +35,15 @@ const Groups = () => {
   return (
     <Container>
       <h1>Groups</h1>
-      <Card>
+      <Card sx={{ p: 1 }}>
         <Box>{content}</Box>
-        <Pagination
-          pagination={pagination}
-          handleNextPage={onHandleNextPage}
-          handlePreviousPage={onHandlePreviousPage}
-        />
+        {isSuccess && (
+          <Pagination
+            pagination={pagination}
+            handleNextPage={onHandleNextPage}
+            handlePreviousPage={onHandlePreviousPage}
+          />
+        )}
       </Card>
     </Container>
   );
